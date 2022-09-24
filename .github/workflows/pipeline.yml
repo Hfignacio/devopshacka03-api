@@ -15,6 +15,14 @@ jobs:
         - name: Clone do Repositório
           uses: actions/checkout@v2
 
+        - name: Setup Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.7.11'
+        
+        - name: Install requirements
+          run: pip install flask flask-wtf pytest pytest-cov
+
         - name: Login no Google Artifact Registry
           env:
             GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
